@@ -15,8 +15,11 @@ class VueTestController extends Controller {
 	}
 
 	public function index(){
-		$vue=new VueJS(['el'=>'v-app','delimiters'=>['<%','%>']],useVuetify:true);
+		$vue=new VueJS(['el'=>'v-app','delimiters'=>['${', '}']],useVuetify:true);
 		$vue->addData('data','Hello world!');
+		$vue->addData('items',['Programming','Design','Vue']);
+		$vue->addData('select',[]);
+		$vue->addData('checkbox',true);
 		$this->vueManager->addVue($vue);
 		$this->loadView("VueTestController/index.html",['script_foot'=>$this->vueManager]);
 	}

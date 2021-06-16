@@ -17,7 +17,20 @@
 </head>
 <body>
 <v-app>
-    <% data %>
+    ${data}
+        <v-checkbox
+                v-model="checkbox"
+                :label="`Checkbox 1: ${checkbox.toString()}`"
+        ></v-checkbox>
+        <v-combobox
+                v-model="select"
+                :items="items"
+                label="Combobox"
+                multiple
+                outlined
+                dense
+        ></v-combobox>
+
 </v-app>
 {% block js %}
     {{ js('https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js') }}
