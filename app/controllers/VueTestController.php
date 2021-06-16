@@ -1,5 +1,6 @@
 <?php
 namespace controllers;
+ use PHPMV\php\ubiquity\UVueManager;
  use PHPMV\VueJS;
  use PHPMV\VueManager;
  use Ubiquity\controllers\Controller;
@@ -8,19 +9,18 @@ namespace controllers;
   * Controller VueTestController
   */
 class VueTestController extends Controller {
-	private ?VueManager $vueManager;
+	private ?UVueManager $vueManager;
 
 	public function initialize() {
-		$this->vueManager=VueManager::getInstance();
+		$this->vueManager=UVueManager::getInstance($this);
 	}
 
 	public function index(){
-		$vue=new VueJS(['el'=>'v-app','delimiters'=>['${', '}']],useVuetify:true);
+		$vue=$this->vueManager->createVue('v-app',useVuetify: true);
 		$vue->addData('data','Hello world!');
 		$vue->addData('items',['Programming','Design','Vue']);
 		$vue->addData('select',[]);
 		$vue->addData('checkbox',true);
-		$this->vueManager->addVue($vue);
-		$this->loadView("VueTestController/index.html",['script_foot'=>$this->vueManager]);
+		$this->vueManager->renderView("VueTestController/index.html");
 	}
 }
