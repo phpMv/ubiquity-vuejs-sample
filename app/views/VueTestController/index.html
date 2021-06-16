@@ -18,19 +18,21 @@
 <body>
 <v-app>
     ${data}
-        <v-checkbox
-                v-model="checkbox"
-                :label="`Checkbox 1: ${checkbox.toString()}`"
-        ></v-checkbox>
-        <v-combobox
-                v-model="select"
-                :items="items"
-                label="Combobox"
-                multiple
-                outlined
-                dense
-        ></v-combobox>
-
+    <v-checkbox
+            v-model="checkbox"
+            :label="`Checkbox 1: ${checkbox.toString()}`"
+    ></v-checkbox>
+    <v-combobox
+            v-model="select"
+            :items="items"
+            label="Combobox"
+            multiple
+            outlined
+            dense
+    ></v-combobox>
+    <ul v-for="item in select">
+        <li>${ item }</li>
+    </ul>
 </v-app>
 {% block js %}
     {{ js('https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js') }}
