@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block body %}
+    <v-app>
+        <v-btn
+                class="ma-2"
+                color="secondary"
+                v-on:click="get"
+        >
+            Load items
+        </v-btn>
+            <v-combobox
+                    v-model="select"
+                    :items="items"
+                    label="Combobox"
+                    multiple
+                    outlined
+                    dense
+            ></v-combobox>
+        <ul v-for="item in select">
+            <li>${ item }</li>
+        </ul>
+    </v-app>
+{% endblock %}
+{% block js %}
+    {{ parent() }}
+    {{ js('https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js') }}
+    {{ script_foot | raw }}
+{% endblock %}
