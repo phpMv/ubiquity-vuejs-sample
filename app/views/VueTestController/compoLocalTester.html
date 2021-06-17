@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+    <v-app>
+        <div id="components-demo">
+            <h1>Local components</h1>
+
+            <button-counter></button-counter>
+            <button-counter></button-counter>
+            <button-counter></button-counter>
+        </div>
+    </v-app>
+{% endblock %}
+{% block js %}
+    {{ parent() }}
+    {{ script_foot | raw }}
+{% endblock %}
