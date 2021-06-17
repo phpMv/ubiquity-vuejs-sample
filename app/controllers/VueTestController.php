@@ -38,7 +38,7 @@ class VueTestController extends Controller {
 		$vue->addData('data','Hello world!');
 		$vue->addData('items',[]);
 		$vue->addData('select',[]);
-		$vue->addMethod('get','let self=this;'.Http::get(Router::path('vue.get'),null,'self.items=response.data;'));
+		$vue->addMethod('get',Http::get(Router::path('vue.get'),null,'self.items=response.data;'));
 		$this->vueManager->renderDefaultView();
 	}
 
