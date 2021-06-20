@@ -61,6 +61,17 @@ class VueTestController extends Controller {
 		$this->vueManager->renderDefaultView();
 	}
 
+	#[Route('compoGlobalVue',name:'vue.compoGlobalVue')]
+	public function compoGlobalWithVueTester(){
+		$vue=$this->vueManager->createVue('v-app',null,true);
+		$compo=new VueJSComponent('button-counter');
+		$compo->addData('count',0);
+		$this->vueManager->addTemplateFileComponent('button-counter.html',$compo,['type'=>'primary']);
+		$vue->addComponent($compo);
+		$this->vueManager->importComponentObject($compo);
+		$this->vueManager->renderView('VueTestController/compoGlobalTester.html');
+	}
+
 	#[Get('get','vue.get')]
 	public function get(){
 		UResponse::asJSON();

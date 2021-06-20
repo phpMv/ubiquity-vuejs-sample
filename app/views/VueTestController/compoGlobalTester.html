@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block body %}
+ <div id="app">
     <v-app>
         <div id="components-demo">
             <h1>Global components</h1>
@@ -8,6 +9,7 @@
             <button-counter></button-counter>
         </div>
     </v-app>
+ </div>
 {% endblock %}
 {% block js %}
     {{ parent() }}
