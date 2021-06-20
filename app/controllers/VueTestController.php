@@ -45,7 +45,7 @@ class VueTestController extends Controller {
 	public function compoLocalTester(){
 		$vue=$this->vueManager->createVue('#components-demo');
 		$compo=new VueJSComponent('button-counter');
-		$compo->addTemplate("<button v-on:click='count++'>Vous m\'avez cliqué {{ count }} fois.</button>");
+		$compo->addTemplate("<button v-on:click='count++'>Vous m\'avez cliqué \${ count } fois.</button>");
 		$compo->addData('count',0);
 		$vue->addComponent($compo);
 		$this->vueManager->importComponentObject($compo);
@@ -56,7 +56,7 @@ class VueTestController extends Controller {
 	public function compoGlobalTester(){
 		$this->vueManager->createVue('#components-demo');
 		$compo=$this->vueManager->createComponent('button-counter');
-		$compo->addTemplate("<button v-on:click='count++'>Vous m\'avez cliqué {{ count }} fois.</button>");
+		$compo->addTemplate("<button v-on:click='count++'>Vous m\'avez cliqué $\{ count } fois.</button>");
 		$compo->addData('count',0);
 		$this->vueManager->renderDefaultView();
 	}
