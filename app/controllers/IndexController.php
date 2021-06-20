@@ -1,5 +1,8 @@
 <?php
 namespace controllers;
+use Ajax\php\ubiquity\JsUtils;
+use Ajax\semantic\html\elements\html5\HtmlLink;
+use Ubiquity\attributes\items\router\Route;
 
 use Ubiquity\core\postinstall\Display;
 use Ubiquity\log\Logger;
@@ -7,6 +10,7 @@ use Ubiquity\themes\ThemesManager;
 
 /**
  * Controller IndexController
+ * @property JsUtils $jquery
  */
 class IndexController extends ControllerBase {
 
@@ -33,4 +37,15 @@ class IndexController extends ControllerBase {
 			$this->forward(IndexController::class);
 		}
 	}
+
+	
+
+	#[Route(path: "Index/test",name: "index.test")]
+	public function test(){
+		$bc=$this->jquery->semantic()->htmlBreadcrumb('bc',['a'=>'aa','b'=>'bb','c'=>'cc']);
+		$bc->addItem(['bla','test']);
+		$bc->addItem('e');
+		$this->jquery->renderView('IndexController/test.html');
+	}
+
 }

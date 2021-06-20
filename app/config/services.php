@@ -6,4 +6,4 @@ use Ubiquity\controllers\Router;
 Router::start();
 Router::addRoute("_default", "controllers\\VueTestController");
 \Ubiquity\assets\AssetsManager::start($config);
-\PHPMV\php\ubiquity\UVueManager::start($config);
+\PHPMV\fw\ubiquity\UVueManager::start($config);

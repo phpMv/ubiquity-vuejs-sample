@@ -1,10 +1,8 @@
 <?php
 namespace controllers;
  use PHPMV\ajax\Http;
- use PHPMV\php\ubiquity\UVueManager;
- use PHPMV\VueJS;
+ use PHPMV\fw\ubiquity\UVueManager;
  use PHPMV\VueJSComponent;
- use PHPMV\VueManager;
  use Ubiquity\attributes\items\router\Get;
  use Ubiquity\attributes\items\router\Route;
  use Ubiquity\controllers\Controller;
@@ -56,11 +54,10 @@ class VueTestController extends Controller {
 
 	#[Route('compoGlobal',name:'vue.compoGlobal')]
 	public function compoGlobalTester(){
-		$vue=$this->vueManager->createVue('#components-demo');
-		$compo=new VueJSComponent('button-counter');
+		$this->vueManager->createVue('#components-demo');
+		$compo=$this->vueManager->createComponent('button-counter');
 		$compo->addTemplate("<button v-on:click='count++'>Vous m\'avez cliqué {{ count }} fois.</button>");
 		$compo->addData('count',0);
-		$this->vueManager->addGlobalComponent($compo);
 		$this->vueManager->renderDefaultView();
 	}
 
