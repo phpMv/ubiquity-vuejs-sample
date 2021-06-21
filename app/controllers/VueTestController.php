@@ -2,6 +2,7 @@
 namespace controllers;
  use PHPMV\ajax\Http;
  use PHPMV\fw\ubiquity\UVueManager;
+ use PHPMV\utils\PhpUtils;
  use PHPMV\VueJSComponent;
  use Ubiquity\attributes\items\router\Get;
  use Ubiquity\attributes\items\router\Route;
@@ -70,6 +71,16 @@ class VueTestController extends Controller {
 		$vue->addComponent($compo);
 		$this->vueManager->importComponentObject($compo);
 		$this->vueManager->renderView('VueTestController/compoGlobalTester.html');
+	}
+
+	#[Route('compoLocalJSFile',name:'vue.compoLocalWithJSFile')]
+	public function compoLocalJSFileTester(){
+		$this->vueManager->parseFile('vuejs');
+		$vue=$this->vueManager->createVue('v-app','demo',true);
+		$vue->addMethod('bt1Click',PhpUtils::getParsedJs('bt1Click'));
+		$vue->addMethod('bt2Click',PhpUtils::getParsedJs('bt2Click'));
+		$vue->addData('value','no value');
+		$this->vueManager->renderDefaultView(['type'=>'error']);
 	}
 
 	#[Get('get','vue.get')]

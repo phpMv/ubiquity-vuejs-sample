@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block body %}
+    <v-app>
+
+    <div id="demo">
+        <v-btn
+                depressed
+                color="{{ type }}" v-on:click='bt1Click'
+        >
+            ${value}
+        </v-btn>
+        <v-btn
+                depressed
+                color="{{ type }}" v-on:click='bt2Click'
+        >
+            ${value}
+        </v-btn>
+</div>
+</v-app>
+
+{% endblock %}
+{% block js %}
+    {{ parent() }}
+    {{ script_foot | raw }}
+{% endblock %}
