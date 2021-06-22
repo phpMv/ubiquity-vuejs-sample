@@ -1,4 +1,4 @@
-//---bt1Click---
+//---bt1Click----
 this.value='bt1';
 //---end---
 

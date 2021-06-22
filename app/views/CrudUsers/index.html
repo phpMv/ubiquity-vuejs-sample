@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block body %}
+    <v-app>
+        <v-data-table
+                :headers="headers"
+                :items="users"
+                item-key="{{ item-key }}"
+                class="elevation-1"
+        >
+            <template v-slot:item.suspended="{ item }">
+                <v-simple-checkbox
+                        v-model="item.suspended"
+                        disabled
+                ></v-simple-checkbox>
+            </template>
+
+        </v-data-table>
+    </v-app>
+{% endblock %}
+{% block js %}
+    {{ parent() }}
+    {{ script_foot | raw }}
+{% endblock %}
