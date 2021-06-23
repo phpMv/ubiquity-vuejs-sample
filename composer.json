@@ -12,7 +12,8 @@
 		"php" : ">=8.0",
 		"phpmv/ubiquity": "dev-master",
 		"twig\/twig": "^3.0",
-		"phpmv/php-vuejs": "dev-main"
+		"phpmv/php-vuejs": "dev-main",
+		"phpmv/ubiquity-vuejs": "dev-main"
 	},
 	"license" : "Apache-2.0",
 	"authors" : [{
